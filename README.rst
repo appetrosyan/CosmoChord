@@ -55,3 +55,38 @@ The changes to CosmoMC are minor:
 - You should **not** use openmp parallelisation, as this in inefficient when
   using PolyChord. Instead, you should use pure MPI parallelisation, and you
   may use as many cores as you have live points.
+  
+Planck Likelihoods
+==================
+As this is a fork of CosmoMC the process of installing the Planck lieklihoods is identical: 
+- install prerequisites of Planck Code: 
+.. bash::
+   pip install cython astropy 
+   sudo pacman -S cfitsio
+   
+- Obtain from the `Planck Legacy archive <https://wiki.cosmos.esa.int/planck-legacy-archive/index.php/Main_Page>` the following the `COM_Likelihood_Code-*.tar.gz` and `COM-Likelihood_Data-*.tar.gz`.
+- Untar the code
+.. bash::
+   tar xvfz COM_likelihood_Code*.tar.gz 
+   cd plc-3.0/plc-3.01/ 
+   
+- install with
+.. bash::
+   ./waf configure --install_all_deps install
+   
+- make sure that all packages are pulled in correctly. Any missing packages may not prevent the code from building, but `CosmoChord` may not have all of its dependencies. 
+- source the environment variables using a `bash`-compatible shell. e.g. 
+.. bash::
+   echo echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.bashrc
+
+- untar the Data
+.. bash:: 
+   tar xvfz COM_Likelihood_Data-*.tar.gz
+
+- symlink into `CosmoChord/data`. 
+.. bash::
+   ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
+   
+- (re)-build CosmoChord
+.. bash::
+   make rebuild
