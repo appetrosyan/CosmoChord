@@ -58,35 +58,48 @@ The changes to CosmoMC are minor:
   
 Planck Likelihoods
 ==================
-As this is a fork of CosmoMC the process of installing the Planck lieklihoods is identical: 
+As this is a fork of CosmoMC, the process of installing the Planck likelihoods is identical: 
 - install prerequisites of Planck Code: 
+
 .. bash::
    pip install cython astropy 
    sudo pacman -S cfitsio
    
-- Obtain from the `Planck Legacy archive <https://wiki.cosmos.esa.int/planck-legacy-archive/index.php/Main_Page>` the following the `COM_Likelihood_Code-*.tar.gz` and `COM-Likelihood_Data-*.tar.gz`.
+- Obtain from the `Planck Legacy archive <https://wiki.cosmos.esa.int/planck-legacy-archive/index.php/Main_Page>` the following the ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
 - Untar the code
+
 .. bash::
    tar xvfz COM_likelihood_Code*.tar.gz 
    cd plc-3.0/plc-3.01/ 
    
 - install with
+
 .. bash::
    ./waf configure --install_all_deps install
    
+   note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
+   If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. 
+   
 - make sure that all packages are pulled in correctly. Any missing packages may not prevent the code from building, but `CosmoChord` may not have all of its dependencies. 
-- source the environment variables using a `bash`-compatible shell. e.g. 
+- source the environment variables using a ``bash``-compatible shell. e.g. zsh. To ease the mental burden, this may be added to the shell profile. 
+
 .. bash::
    echo echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.bashrc
+   
+   note that in order for this to work with other shells (e.g. ``fish``) you need to adapt the script ``bin/clik_profile.sh``, 
+   otherwise CosmoChord will not function properly. 
 
 - untar the Data
+
 .. bash:: 
    tar xvfz COM_Likelihood_Data-*.tar.gz
 
 - symlink into `CosmoChord/data`. 
+
 .. bash::
    ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
    
 - (re)-build CosmoChord
+
 .. bash::
    make rebuild
