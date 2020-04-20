@@ -88,13 +88,13 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
    note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
    If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. THis may not prevent the Placnk 
    
-- During each run of CosmoChord, the correct environment variables and functions must be present. An example for ``bash`` is given in ``bin/clik_profile.sh``, and it should be adapted to your shell. To ensure that the environment is set up correctly every time you wish to run CosmoChord, you may wish to source this profile in your login shell. For example 
+- Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g.
 
 .. bash::
    echo echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.bashrc
    
    
-  Adapt as required (e.g. for ``zsh``, ``xonsh``, ``fish``). 
+Adapt as required for ``zsh``, ``xonsh``, ``fish``, etc.  
 
 - untar the baseline data
 
