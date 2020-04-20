@@ -63,38 +63,45 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 
 .. bash::
    pip install cython astropy 
-   sudo pacman -S cfitsio
+
+- install ``cfitsio``. For ArchLinux this is available in the official repositories. On Scientific linux, it's pre-installed and needs to be found with ``module avail`` and loaded with e.g. ``module load cfitsio-<somecompiler>-<someversion>``.  Make sure that the compiler version matches the one used for compiling CosmoChord, and Planck likelihood code.   
    
-- Obtain from the `Planck Legacy archive <https://wiki.cosmos.esa.int/planck-legacy-archive/index.php/Main_Page>` the following the ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
+- Obtain the likelihood code and the baseline data from the ``Planck Legacy archive <http://pla.esac.esa.int/pla/#home>``:
+
+.. bash::
+    curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151912 --output "COM_Likelihood_CODE-v3.0_R3.01.tar.gz"
+    curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902 --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
+    
+
+- Failing that, manually download ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
 - Untar the code
 
 .. bash::
    tar xvfz COM_likelihood_Code*.tar.gz 
    cd plc-3.0/plc-3.01/ 
    
-- install with
+- install planck likelihood code with:
 
 .. bash::
    ./waf configure --install_all_deps install
    
    note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
-   If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. 
+   If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. THis may not prevent the Placnk 
    
-- make sure that all packages are pulled in correctly. Any missing packages may not prevent the code from building, but `CosmoChord` may not have all of its dependencies. 
-- source the environment variables using a ``bash``-compatible shell. e.g. zsh. To ease the mental burden, this may be added to the shell profile. 
+- During each run of CosmoChord, the correct environment variables and functions must be present. An example for ``bash`` is given in ``bin/clik_profile.sh``, and it should be adapted to your shell. To ensure that the environment is set up correctly every time you wish to run CosmoChord, you may wish to source this profile in your login shell. For example 
 
 .. bash::
    echo echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.bashrc
    
-   note that in order for this to work with other shells (e.g. ``fish``) you need to adapt the script ``bin/clik_profile.sh``, 
-   otherwise CosmoChord will not function properly. 
+   
+  Adapt as required (e.g. for ``zsh``, ``xonsh``, ``fish``). 
 
-- untar the Data
+- untar the baseline data
 
 .. bash:: 
    tar xvfz COM_Likelihood_Data-*.tar.gz
 
-- symlink into `CosmoChord/data`. 
+- symlink into  baseline data into ``CosmoChord/data``. 
 
 .. bash::
    ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
