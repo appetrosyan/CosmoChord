@@ -20,7 +20,7 @@ adds nested sampling provided by PolyChord.
 
 Installation procedure:
 
-.. bash::
+.. code:: bash
    
    git clone --recursive https://github.com/williamjameshandley/CosmoChord
    cd CosmoChord
@@ -39,7 +39,7 @@ Changes
 =======
 You can see the key changes by running:
 
-.. bash::
+.. code:: bash
    git remote add upstream https://github.com/cmbant/CosmoMC
    git fetch upstream
    git diff --stat upstream/master
@@ -61,14 +61,14 @@ Planck Likelihoods
 As this is a fork of CosmoMC, the process of installing the Planck likelihoods is identical: 
 - install prerequisites of Planck Code: 
 
-.. bash::
+.. code:: bash
    pip install cython astropy 
 
-- install ``cfitsio``. For ArchLinux this is available in the official repositories. On Scientific linux, it's pre-installed and needs to be found with ``module avail`` and loaded with e.g. ``module load cfitsio-<somecompiler>-<someversion>``.  Make sure that the compiler version matches the one used for compiling CosmoChord, and Planck likelihood code.   
+- install ``cfitsio`` and ``astropy``. Most Linux distributions will have ``cfitsio`` in the official repositories.
    
 - Obtain the likelihood code and the baseline data from the ``Planck Legacy archive <http://pla.esac.esa.int/pla/#home>``:
 
-.. bash::
+.. code:: bash
     curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151912 --output "COM_Likelihood_CODE-v3.0_R3.01.tar.gz"
     curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902 --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
     
@@ -76,37 +76,31 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 - Failing that, manually download ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
 - Untar the code
 
-.. bash::
+.. code:: bash
    tar xvfz COM_likelihood_Code*.tar.gz 
    cd plc-3.0/plc-3.01/ 
    
 - install planck likelihood code with:
 
-.. bash::
+.. code:: bash
    ./waf configure --install_all_deps install
    
    note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
    If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. THis may not prevent the Placnk 
    
-- Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g.
-
-.. bash::
-   echo echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.bashrc
-   
-   
-Adapt as required for ``zsh``, ``xonsh``, ``fish``, etc.  
+- Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g. by adding ``source $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``. 
 
 - untar the baseline data
 
-.. bash:: 
+.. code:: bash
    tar xvfz COM_Likelihood_Data-*.tar.gz
 
 - symlink into  baseline data into ``CosmoChord/data``. 
 
-.. bash::
+.. code:: bash
    ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
    
 - (re)-build CosmoChord
 
-.. bash::
+.. code:: bash
    make rebuild
