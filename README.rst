@@ -68,7 +68,7 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 
 - install ``cfitsio`` and ``astropy``. Most Linux distributions will have ``cfitsio`` in the official repositories.
    
-- Obtain the likelihood code and the baseline data from the ``Planck Legacy archive <http://pla.esac.esa.int/pla/#home>``:
+- Obtain the likelihood code and the baseline data from the `Planck Legacy archive <http://pla.esac.esa.int/pla/#home>`__:
 
 .. code:: bash
 
@@ -90,8 +90,8 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 
    ./waf configure --install_all_deps install
    
-   note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
-   If this is the case, interrupt (`Ctrl+c`) and install the dependencies manually. THis may not prevent the Placnk 
+note that if this fails, the ``waf`` script will attempt to pull the dependencies from obsolete hardcoded locations. 
+If this is the case, interrupt (``Ctrl+c``) and install the dependencies manually. 
    
 - Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g. by adding ``source $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``. 
 
