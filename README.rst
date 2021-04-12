@@ -35,11 +35,12 @@ If you wish to use Planck data, you should follow the `CosmoMC planck instructio
 
 
 
-Changes
-=======
+Changes from CosmoMC
+====================
 You can see the key changes by running:
 
 .. code:: bash
+
    git remote add upstream https://github.com/cmbant/CosmoMC
    git fetch upstream
    git diff --stat upstream/master
@@ -62,6 +63,7 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 - install prerequisites of Planck Code: 
 
 .. code:: bash
+
    pip install cython astropy 
 
 - install ``cfitsio`` and ``astropy``. Most Linux distributions will have ``cfitsio`` in the official repositories.
@@ -69,6 +71,7 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 - Obtain the likelihood code and the baseline data from the ``Planck Legacy archive <http://pla.esac.esa.int/pla/#home>``:
 
 .. code:: bash
+
     curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151912 --output "COM_Likelihood_CODE-v3.0_R3.01.tar.gz"
     curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902 --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
     
@@ -77,12 +80,14 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 - Untar the code
 
 .. code:: bash
+
    tar xvfz COM_likelihood_Code*.tar.gz 
    cd plc-3.0/plc-3.01/ 
    
 - install planck likelihood code with:
 
 .. code:: bash
+
    ./waf configure --install_all_deps install
    
    note that if this fails, the `waf` script will attempt to pull the dependencies from obsolete hardcoded locations. 
@@ -93,14 +98,17 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 - untar the baseline data
 
 .. code:: bash
+
    tar xvfz COM_Likelihood_Data-*.tar.gz
 
 - symlink into  baseline data into ``CosmoChord/data``. 
 
 .. code:: bash
+
    ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
    
 - (re)-build CosmoChord
 
 .. code:: bash
+
    make rebuild
