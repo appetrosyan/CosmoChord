@@ -93,7 +93,10 @@ If this is the case, interrupt (``Ctrl+c``) and install the dependencies manuall
    
 - Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g. by adding ``source $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``. 
 
-- untar the baseline data
+- Return to the CosmoChord's root directory: ``cd ../../..``.
+
+- Unpack the baseline data
+
 
 .. code:: bash
 
@@ -103,7 +106,7 @@ If this is the case, interrupt (``Ctrl+c``) and install the dependencies manuall
 
 .. code:: bash
 
-   ln -s baseline/plc3-0 CosmoChord/data/clik_14.0
+   ln -s baseline/plc3-0 data/clik_14.0
    
 - (re)-build CosmoChord
 
