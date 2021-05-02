@@ -80,7 +80,7 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 .. code:: bash
 
    tar xvfz COM_likelihood_Code*.tar.gz 
-   cd plc-3.0/plc-3.01/ 
+   cd code/plc-3.0/plc-3.01/ 
    
 - install planck likelihood code with:
 
