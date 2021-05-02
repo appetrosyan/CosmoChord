@@ -70,12 +70,12 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 
 .. code:: bash
 
-    curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151912 --output "COM_Likelihood_CODE-v3.0_R3.01.tar.gz"
-    curl http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902 --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
+    curl "http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151912" --output "COM_Likelihood_CODE-v3.0_R3.01.tar.gz"
+    curl "http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902" --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
     
 
-- Failing that, manually download ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
-- Untar the code
+- Alternatively, manually download ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
+- Unpack the code
 
 .. code:: bash
 
@@ -89,7 +89,7 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
    ./waf configure --install_all_deps install
    
 note that if this fails, the ``waf`` script will attempt to pull the dependencies from obsolete hardcoded locations. 
-If this is the case, interrupt (``Ctrl+c``) and install the dependencies manually. 
+If this is the case, interrupt (``Ctrl+c``) and install the dependencies manually. See your linux distribution's package catalogue to find the required libraries. 
    
 - Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g. by adding ``source $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``. 
 
