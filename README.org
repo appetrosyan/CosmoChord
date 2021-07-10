@@ -16,7 +16,9 @@
 
  - Homepage :: [[http://polychord.co.uk]]
 
- [[https://travis-ci.org/williamjameshandley/CosmoChord ]][[https://zenodo.org/badge/latestdoi/158467573]]
+ [[https://travis-ci.org/williamjameshandley/CosmoChord][https://travis-ci.org/williamjameshandley/CosmoChord.svg?branch=master]]
+
+ [[https://zenodo.org/badge/latestdoi/158467573][https://zenodo.org/badge/158467573.svg]]
 
 ** Description and installation
    :PROPERTIES:
