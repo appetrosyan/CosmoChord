@@ -1,19 +1,22 @@
 * SuperCosmoChord
-  :PROPERTIES:
-  :CUSTOM_ID: supercosmochord
-  :END:
-- CosmoChord :: PolyChord + CosmoMC for cosmological parameter
-  estimation and evidence calculation
 
-- Author :: Will Handley2
+** About
+   :PROPERTIES:
+   :CUSTOM_ID: supercosmochord
+   :END:
+ - CosmoChord :: PolyChord + CosmoMC for cosmological parameter
+   estimation and evidence calculation
 
-- ForkedFrom :: [[https://github.com/cmbant/CosmoMC]]
-gi
-- Homepage :: [[http://polychord.co.uk]]
+ - Author ::
+   - Will Handley (PolyChord and CosmoChord),
+   - Aleksandr Petrosyan (Superpositional proposals),
+   - Anthony Lewis (CosmoMC)
 
-[[https://travis-ci.org/williamjameshandley/CosmoChord][[[https://travis-ci.org/williamjameshandley/CosmoChord.svg?branch=master]]]]
+ - ForkedFrom :: [[https://github.com/cmbant/CosmoMC]]
 
-[[https://zenodo.org/badge/latestdoi/158467573][[[https://zenodo.org/badge/158467573.svg]]]]
+ - Homepage :: [[http://polychord.co.uk]]
+
+ [[https://travis-ci.org/williamjameshandley/CosmoChord ]][[https://zenodo.org/badge/latestdoi/158467573]]
 
 ** Description and installation
    :PROPERTIES:
