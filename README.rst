@@ -1,5 +1,5 @@
 ===================
-CosmoChord
+SuperCosmoChord
 ===================
 :CosmoChord:  PolyChord + CosmoMC for cosmological parameter estimation and evidence calculation
 :Author: Will Handley
@@ -15,8 +15,10 @@ CosmoChord
 Description and installation
 =============================
 
-CosmoChord is a fork of `CosmoMC <https://github.com/cmbant/CosmoMC>`__, which
-adds nested sampling provided by PolyChord.
+SuperCosmoChord is a fork of `CosmoMC
+<https://github.com/cmbant/CosmoMC>`__, which adds nested sampling
+provided by PolyChord, and uses superpositional proposal
+re-partitioning to accelerate the process. 
 
 Installation procedure:
 
@@ -28,10 +30,13 @@ Installation procedure:
    export OMP_NUM_THREADS=1
    ./cosmomc test.ini
 
-To run, you should add ``action=5``  to your ini file, and include
+To run, you should add ``action=5`` to your ini file, and include
 ``batch3/polychord.ini``. Consider modifying ``test.ini``
 
-If you wish to use Planck data, you should follow the `CosmoMC planck instructions <https://cosmologist.info/cosmomc/readme_planck.html>`__, and then run ``make clean; make`` after ``source bin/clik_profile.sh`` 
+If you wish to use Planck data, you should follow the `CosmoMC planck
+instructions <https://cosmologist.info/cosmomc/readme_planck.html>`__,
+and then run ``make clean; make``; after — ``source
+bin/clik_profile.sh``
 
 Changes from CosmoMC
 ====================
@@ -57,16 +62,21 @@ The changes to CosmoMC are minor:
   
 Planck Likelihoods
 ==================
-As this is a fork of CosmoMC, the process of installing the Planck likelihoods is identical: 
-- install prerequisites of Planck Code: 
+
+As this is a fork of CosmoMC, the process of installing the Planck
+likelihoods is identical:
+- install prerequisites of Planck Code:
 
 .. code:: bash
 
-   pip install cython astropy 
+   pip install cython astropy
 
-- install ``cfitsio`` and ``astropy``. Most Linux distributions will have ``cfitsio`` in the official repositories.
+- install ``cfitsio`` and ``astropy``. Most Linux distributions will
+  have ``cfitsio`` in the official repositories. Consult your
+  distribution's package repositories.
    
-- Obtain the likelihood code and the baseline data from the `Planck Legacy archive <http://pla.esac.esa.int/pla/#home>`__:
+- Obtain the likelihood code and the baseline data from the `Planck
+  Legacy archive <http://pla.esac.esa.int/pla/#home>`__:
 
 .. code:: bash
 
@@ -74,7 +84,9 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
     curl "http://pla.esac.esa.int/pla-sl/data-action?COSMOLOGY.COSMOLOGY_OID=151902" --output "COM_Likelihood_Data-baseline_R3.00.tar.gz"
     
 
-- Alternatively, manually download ``COM_Likelihood_Code-*.tar.gz`` and ``COM-Likelihood_Data-*.tar.gz``.
+- Alternatively, manually download ``COM_Likelihood_Code-*.tar.gz``
+  and ``COM-Likelihood_Data-*.tar.gz``.
+  
 - Unpack the code
 
 .. code:: bash
@@ -88,10 +100,15 @@ As this is a fork of CosmoMC, the process of installing the Planck likelihoods i
 
    ./waf configure --install_all_deps install
    
-note that if this fails, the ``waf`` script will attempt to pull the dependencies from obsolete hardcoded locations. 
-If this is the case, interrupt (``Ctrl+c``) and install the dependencies manually. See your linux distribution's package catalogue to find the required libraries. 
+note that if this fails, the ``waf`` script will attempt to pull the
+dependencies from obsolete hardcoded locations.  If this is the case,
+interrupt (``Ctrl+c``) and install the dependencies manually. See your
+linux distribution's package catalogue to find the required libraries.
    
-- Set-up the environment variables. An example profile for ``bash`` is given in ``bin/clik_profile.sh``. To avoid frustration, you may wish to source the profile at login, e.g. by adding ``source $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``. 
+- Set-up the environment variables. An example profile for ``bash`` is
+  given in ``bin/clik_profile.sh``. To avoid frustration, you may wish
+  to source the profile at login, e.g. by adding ``source
+  $(pwd)/bin/clik_profile.sh`` to your ``.bashrc``.
 
 - Return to the CosmoChord's root directory: ``cd ../../..``.
 
